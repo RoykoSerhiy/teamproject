@@ -1,0 +1,55 @@
+﻿<Window x:Class="TeamProject.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="550" Width="825" Loaded="Window_Loaded_1">
+    <Grid>
+        <TabControl HorizontalAlignment="Left" Height="510" Margin="0,10,0,0" VerticalAlignment="Top" Width="810">
+            <TabItem Header="Main">
+                <Grid Background="#FFE5E5E5">
+                    
+                    <ComboBox Name="cbCountry" Height="30" Margin="10,10,617,438" ItemsSource="{Binding}" SelectionChanged="cbCountry_SelectionChanged_1"/>
+                    <ComboBox Name="cbCity" Height="30" Margin="188,10,439,438" ItemsSource="{Binding}" SelectionChanged="cbCity_SelectionChanged_1" RenderTransformOrigin="0.492,0.533"/>
+                    
+                    <TextBox Name="tbxSearch" Height="20" Margin="10,54,524,404"/>
+                    <Button Name="btnSearch" Height="20" Content="Search" Margin="276,54,439,404" RenderTransformOrigin="0.482,0.5"/>
+                    <TabControl HorizontalAlignment="Left" Height="390" Margin="10,80,0,0" VerticalAlignment="Top" Width="790">
+                        <TabItem Header="Residence">
+                            <Grid Background="#FFE5E5E5">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="29*"/>
+                                    <ColumnDefinition Width="448*"/>
+                                </Grid.ColumnDefinitions>
+                                <DataGrid Name="dgResidence" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="330" Width="770" AutoGenerateColumns="False" CanUserAddRows="False" CanUserDeleteRows="False" CanUserReorderColumns="False" ItemsSource="{Binding}" IsReadOnly="True" Grid.ColumnSpan="2">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Hotel / Hostel" Width="190" Binding="{Binding Name}"/>
+                                        <DataGridTextColumn Header="Adress" Width="300" Binding="{Binding Adress}"/>
+                                        <DataGridTextColumn Header="Price" Width="80" Binding="{Binding Price}"/>
+                                         <DataGridTextColumn Header="Raiting" Width="80" Binding="{Binding Raiting}"/>
+                                        <DataGridTextColumn Header="Phone" Width="120" Binding="{Binding Phone}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+
+                        </TabItem>
+                        <TabItem Header="Transport">
+                            <Grid Background="#FFE5E5E5">
+                                <DataGrid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="338" Width="770">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name"/>
+                                        <DataGridTextColumn Header="Adress"/>
+                                        <DataGridTextColumn Header="price"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </TabItem>
+                    </TabControl>
+
+
+                </Grid>
+             </TabItem>
+
+
+        </TabControl>
+
+    </Grid>
+</Window>
