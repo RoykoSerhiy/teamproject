@@ -12,16 +12,14 @@ namespace EDModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Country
+    public partial class Supermarkets
     {
-        public Country()
-        {
-            this.City = new HashSet<City>();
-        }
-    
         public int Id { get; set; }
+        public int CityId { get; set; }
         public string name { get; set; }
+        public string adress { get; set; }
+        public string phone { get; set; }
     
-        public virtual ICollection<City> City { get; set; }
+        public virtual City City { get; set; }
     }
 }

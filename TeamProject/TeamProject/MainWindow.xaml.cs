@@ -24,15 +24,27 @@ namespace TeamProject
     /// </summary>
     public partial class MainWindow : Window
     {
+        #region CreatesVarible
         static string connectionString = ConfigurationManager.ConnectionStrings["TeamProjectEntities"].ConnectionString;
         static public ICountryManager countryManager = new CountryManager(connectionString);
         static public ICityManager cityManager = new CityManager(connectionString);
         static public IResidenseManager residenseManager = new ResidenseManager(connectionString);
+        static public ITransportManager transportManager = new TransportManager(connectionString);
+        static public IEatPlaceManager eatPlaceManager = new EatPlaceManager(connectionString);
+        static public ISupermarketManager supermarketsManager = new SupermarketManager(connectionString);
+        static public IEntertainmentManager entertainmentManager = new EntertainmentManager(connectionString);
+        static public IActivitiesManager activitiesManager = new ActivitiesManager(connectionString);
         static public CountryViewModel countriesViewModel = new CountryViewModel(countryManager);
         static public CityViewModel citiesViewModel = new CityViewModel(cityManager);
         static public ResidenseViewModel residenseViewModel = new ResidenseViewModel(residenseManager);
+        static public TransportViewModel transportViewModel = new TransportViewModel(transportManager);
+        static public EatPlaceViewModel eatPlaceViewModel = new EatPlaceViewModel(eatPlaceManager);
+        static public SupermarketsViewModel supermarketsViewModel = new SupermarketsViewModel(supermarketsManager);
+        static public EntertainmentViewModel entertainmentViewModel = new EntertainmentViewModel(entertainmentManager);
+        static public ActivitiesViewModel activitiesViewModel = new ActivitiesViewModel(activitiesManager);
         public int CountryID;
         public int CityID;
+        #endregion CreatesVarible
         public MainWindow()
         {
             try
@@ -64,18 +76,18 @@ namespace TeamProject
         {
 
            CountryID = countriesViewModel.Countries
-                .Where(c => c.Name == cbCountry.SelectedItem.ToString())
-                .Select(c => c.ID).First();
+                .Where(c => c.name == cbCountry.SelectedItem.ToString())
+                .Select(c => c.Id).First();
 
            cbCity.DataContext = cmbCityItems;
            cbCity.SelectedIndex = 0;
-          // MessageBox.Show(CountryID.ToString());
+          
         }
         public IEnumerable<string> cmbCountryItems
         {
             get
             {
-                return countriesViewModel.Countries.OrderBy(c => c.Name).Select(c => c.Name).ToList();
+                return countriesViewModel.Countries.OrderBy(c => c.name).Select(c => c.name).ToList();
             }
 
         }
@@ -83,9 +95,9 @@ namespace TeamProject
         {
             get
             {
-                return citiesViewModel.Cities.Where(c => c.CountryId == CountryID).OrderBy(c => c.Name)
-                    .Select(c => c.Name).ToList();
-                //return citiesViewModel.Cities.OrderBy(c => c.Name).Select(c => c.Name).ToList();
+                return citiesViewModel.Cities.Where(c => c.CountryId == CountryID).OrderBy(c => c.name)
+                    .Select(c => c.name).ToList();
+               
             }
         }
 
@@ -95,16 +107,18 @@ namespace TeamProject
             try
             {
                 CityID = citiesViewModel.Cities
-                    .Where(c => c.Name == cbCity.SelectedItem.ToString())
-                    .Select(c => c.ID).First();
-                //MessageBox.Show(CityID.ToString());
+                    .Where(c => c.name == cbCity.SelectedItem.ToString())
+                    .Select(c => c.Id).First();
+                
                 dgResidence.DataContext = residenseViewModel.Catalog.Where(r => r.CityId == CityID);
+                dgTransport.DataContext = transportViewModel.Catalog.Where(t => t.CityId == CityID);
+                dgEatPlase.DataContext = eatPlaceViewModel.Catalog.Where(et => et.CityId == CityID);
+                dgSupermarkets.DataContext = supermarketsViewModel.Catalog.Where(s => s.CityId == CityID);
+                dgEntertainment.DataContext = entertainmentViewModel.Catalog.Where(en => en.CityId == CityID);
+                dgActivities.DataContext = activitiesViewModel.Catalog.Where(a => a.CityId == CityID);
             }
             catch (Exception ex)
-            {
-                // MessageBox.Show(ex.Message);
-
-            }
+            {}
         }
     }
 }

@@ -6,28 +6,24 @@ using System.Threading.Tasks;
 
 namespace TeamProject.Models
 {
-    public class ResidenceModel
+    public class SupermarketsModel
     {
-        #region Ctor
-        public ResidenceModel(int id, int cityId ,string name, string adress, int raiting,string phone, decimal price)
+         #region Ctor
+        public SupermarketsModel(int id, int cityId , string name , string address , string phone)
         {
             this.Id = id;
-            this.Name = name;
             this.CityId = cityId;
-            this.Adress = adress;
-            this.Raiting = raiting;
+            this.Name = name;
+            this.Address = address;
             this.Phone = phone;
-            this.Price = price;
         }
         #endregion Ctor
         #region Data
         public int Id { get; set; }
         public int CityId { get; set; }
         public string Name { get; set; }
-        public string Adress { get; set; }
-        public int Raiting { get; set; }
+        public string Address { get; set; }
         public string Phone { get; set; }
-        public decimal Price { get; set; }
         #endregion Data
     }
 }

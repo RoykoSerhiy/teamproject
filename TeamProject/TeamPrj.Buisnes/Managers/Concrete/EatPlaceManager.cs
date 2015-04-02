@@ -9,15 +9,15 @@ using TeamPrj.Buisnes.Managers.Abstract;
 
 namespace TeamPrj.Buisnes.Managers.Concrete
 {
-    public class ResidenseManager : AbstractManager , IResidenseManager
+    public class EatPlaceManager : AbstractManager , IEatPlaceManager 
     {
-         public ResidenseManager(string connStr) : base(connStr) { }
+         public EatPlaceManager(string connStr) : base(connStr) { }
 
-        public IEnumerable<Residence> GetAll()
+        public IEnumerable<EatPlace> GetAll()
         {
             using(DbContext ctx = this.CreateDbContext())
             {
-                return ctx.Set<Residence>().ToList();
+                return ctx.Set<EatPlace>().ToList();
             }
         }
     }

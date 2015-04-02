@@ -23,8 +23,8 @@ namespace TeamProject.ViewModel
             var _res = from c in countries
                        select new
                        {
-                           Id = c.ID,
-                           Name = c.Name,
+                           Id = c.Id,
+                           Name = c.name,
                            
                        };
             foreach (var r in _res)

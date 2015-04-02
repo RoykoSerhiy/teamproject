@@ -12,15 +12,14 @@ namespace EDModel
     using System;
     using System.Collections.Generic;
     
-    public partial class Residense
+    public partial class Entertainment
     {
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int CityId { get; set; }
         public string Name { get; set; }
-        public string Address { get; set; }
-        public int Raiting { get; set; }
+        public string Adress { get; set; }
+        public string Link { get; set; }
         public string Phone { get; set; }
-        public decimal Price { get; set; }
     
         public virtual City City { get; set; }
     }

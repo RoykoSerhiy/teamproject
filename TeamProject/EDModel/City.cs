@@ -16,14 +16,24 @@ namespace EDModel
     {
         public City()
         {
-            this.Residense = new HashSet<Residense>();
+            this.Activities = new HashSet<Activities>();
+            this.Residence = new HashSet<Residence>();
+            this.EatPlace = new HashSet<EatPlace>();
+            this.Entertainment = new HashSet<Entertainment>();
+            this.Supermarkets = new HashSet<Supermarkets>();
+            this.Transport = new HashSet<Transport>();
         }
     
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int CountryId { get; set; }
-        public string Name { get; set; }
+        public string name { get; set; }
     
+        public virtual ICollection<Activities> Activities { get; set; }
+        public virtual ICollection<Residence> Residence { get; set; }
         public virtual Country Country { get; set; }
-        public virtual ICollection<Residense> Residense { get; set; }
+        public virtual ICollection<EatPlace> EatPlace { get; set; }
+        public virtual ICollection<Entertainment> Entertainment { get; set; }
+        public virtual ICollection<Supermarkets> Supermarkets { get; set; }
+        public virtual ICollection<Transport> Transport { get; set; }
     }
 }

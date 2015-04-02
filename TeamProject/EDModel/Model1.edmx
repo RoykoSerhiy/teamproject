@@ -6,65 +6,204 @@
     <edmx:StorageModels>
       <Schema Namespace="Хранилище TeamProjectModel" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityContainer Name="Хранилище TeamProjectModelContainer">
+          <EntitySet Name="Activities" EntityType="Хранилище TeamProjectModel.Activities" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="City" EntityType="Хранилище TeamProjectModel.City" store:Type="Tables" Schema="dbo" />
           <EntitySet Name="Country" EntityType="Хранилище TeamProjectModel.Country" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Residense" EntityType="Хранилище TeamProjectModel.Residense" store:Type="Tables" Schema="dbo" />
-          <AssociationSet Name="FK_City_CountryId_CountryId" Association="Хранилище TeamProjectModel.FK_City_CountryId_CountryId">
+          <EntitySet Name="EatPlace" EntityType="Хранилище TeamProjectModel.EatPlace" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Entertainment" EntityType="Хранилище TeamProjectModel.Entertainment" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Residence" EntityType="Хранилище TeamProjectModel.Residence" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Supermarkets" EntityType="Хранилище TeamProjectModel.Supermarkets" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Transport" EntityType="Хранилище TeamProjectModel.Transport" store:Type="Tables" Schema="dbo" />
+          <AssociationSet Name="fk_ActivitiesId_City_Id" Association="Хранилище TeamProjectModel.fk_ActivitiesId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CityId_City_Id" Association="Хранилище TeamProjectModel.fk_CityId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Residence" EntitySet="Residence" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CountryId_Country_Id" Association="Хранилище TeamProjectModel.fk_CountryId_Country_Id">
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
           </AssociationSet>
-          <AssociationSet Name="FK_Place_CityId_CityId" Association="Хранилище TeamProjectModel.FK_Place_CityId_CityId">
+          <AssociationSet Name="fk_EatPlaceId_City_Id" Association="Хранилище TeamProjectModel.fk_EatPlaceId_City_Id">
             <End Role="City" EntitySet="City" />
-            <End Role="Residense" EntitySet="Residense" />
+            <End Role="EatPlace" EntitySet="EatPlace" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EntertainmentId_City_Id" Association="Хранилище TeamProjectModel.fk_EntertainmentId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Entertainment" EntitySet="Entertainment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SupermarketsId_City_Id" Association="Хранилище TeamProjectModel.fk_SupermarketsId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Supermarkets" EntitySet="Supermarkets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TransportId_City_Id" Association="Хранилище TeamProjectModel.fk_TransportId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Transport" EntitySet="Transport" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Activities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="128" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="64" />
+          <Property Name="Link" Type="nvarchar" MaxLength="64" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="64" />
+        </EntityType>
         <EntityType Name="City">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CountryId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="name" Type="nvarchar" MaxLength="64" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="nvarchar" MaxLength="64" />
         </EntityType>
-        <EntityType Name="Residense">
+        <EntityType Name="EatPlace">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="CityId" Type="int" Nullable="false" />
-          <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="164" />
-          <Property Name="Address" Type="nvarchar" Nullable="false" MaxLength="164" />
-          <Property Name="Raiting" Type="int" />
-          <Property Name="Phone" Type="nvarchar" Nullable="false" MaxLength="64" />
-          <Property Name="Price" Type="numeric" Scale="2" />
+          <Property Name="name" Type="nvarchar" MaxLength="64" />
+          <Property Name="phone" Type="nvarchar" MaxLength="64" />
+          <Property Name="desccription" Type="nvarchar" MaxLength="512" />
+          <Property Name="raiting" Type="int" Nullable="false" />
+          <Property Name="adress" Type="nvarchar" MaxLength="128" />
         </EntityType>
-        <Association Name="FK_City_CountryId_CountryId">
+        <EntityType Name="Entertainment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="64" />
+          <Property Name="Adress" Type="nvarchar" MaxLength="64" />
+          <Property Name="Link" Type="nvarchar" MaxLength="64" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Residence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="64" />
+          <Property Name="adress" Type="nvarchar" MaxLength="64" />
+          <Property Name="stars" Type="int" Nullable="false" />
+          <Property Name="phone" Type="nvarchar" MaxLength="64" />
+          <Property Name="price" Type="decimal" />
+        </EntityType>
+        <EntityType Name="Supermarkets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="name" Type="nvarchar" MaxLength="64" />
+          <Property Name="adress" Type="nvarchar" MaxLength="64" />
+          <Property Name="phone" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="int" Nullable="false" />
+          <Property Name="Taxi_price" Type="decimal" />
+          <Property Name="Bus_price" Type="decimal" />
+          <Property Name="Metro_price" Type="decimal" />
+        </EntityType>
+        <Association Name="fk_ActivitiesId_City_Id">
+          <End Role="City" Type="Хранилище TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Activities" Type="Хранилище TeamProjectModel.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CityId_City_Id">
+          <End Role="City" Type="Хранилище TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Residence" Type="Хранилище TeamProjectModel.Residence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Residence">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CountryId_Country_Id">
           <End Role="Country" Type="Хранилище TeamProjectModel.Country" Multiplicity="1" />
           <End Role="City" Type="Хранилище TeamProjectModel.City" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="City">
               <PropertyRef Name="CountryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Place_CityId_CityId">
+        <Association Name="fk_EatPlaceId_City_Id">
           <End Role="City" Type="Хранилище TeamProjectModel.City" Multiplicity="1" />
-          <End Role="Residense" Type="Хранилище TeamProjectModel.Residense" Multiplicity="*" />
+          <End Role="EatPlace" Type="Хранилище TeamProjectModel.EatPlace" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Residense">
+            <Dependent Role="EatPlace">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EntertainmentId_City_Id">
+          <End Role="City" Type="Хранилище TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Entertainment" Type="Хранилище TeamProjectModel.Entertainment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entertainment">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SupermarketsId_City_Id">
+          <End Role="City" Type="Хранилище TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Supermarkets" Type="Хранилище TeamProjectModel.Supermarkets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supermarkets">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TransportId_City_Id">
+          <End Role="City" Type="Хранилище TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Transport" Type="Хранилище TeamProjectModel.Transport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transport">
               <PropertyRef Name="CityId" />
             </Dependent>
           </ReferentialConstraint>
@@ -74,70 +213,219 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="TeamProjectModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
-        <EntityContainer Name="TeamProjectEntities1" p1:LazyLoadingEnabled="true">
+        <EntityContainer Name="TeamProjectEntities" p1:LazyLoadingEnabled="true">
+          <EntitySet Name="Activities" EntityType="TeamProjectModel.Activities" />
           <EntitySet Name="City" EntityType="TeamProjectModel.City" />
           <EntitySet Name="Country" EntityType="TeamProjectModel.Country" />
-          <EntitySet Name="Residense" EntityType="TeamProjectModel.Residense" />
-          <AssociationSet Name="FK_City_CountryId_CountryId" Association="TeamProjectModel.FK_City_CountryId_CountryId">
+          <EntitySet Name="EatPlace" EntityType="TeamProjectModel.EatPlace" />
+          <EntitySet Name="Entertainment" EntityType="TeamProjectModel.Entertainment" />
+          <EntitySet Name="Residence" EntityType="TeamProjectModel.Residence" />
+          <EntitySet Name="Supermarkets" EntityType="TeamProjectModel.Supermarkets" />
+          <EntitySet Name="Transport" EntityType="TeamProjectModel.Transport" />
+          <AssociationSet Name="fk_ActivitiesId_City_Id" Association="TeamProjectModel.fk_ActivitiesId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Activities" EntitySet="Activities" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CityId_City_Id" Association="TeamProjectModel.fk_CityId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Residence" EntitySet="Residence" />
+          </AssociationSet>
+          <AssociationSet Name="fk_CountryId_Country_Id" Association="TeamProjectModel.fk_CountryId_Country_Id">
             <End Role="Country" EntitySet="Country" />
             <End Role="City" EntitySet="City" />
           </AssociationSet>
-          <AssociationSet Name="FK_Place_CityId_CityId" Association="TeamProjectModel.FK_Place_CityId_CityId">
+          <AssociationSet Name="fk_EatPlaceId_City_Id" Association="TeamProjectModel.fk_EatPlaceId_City_Id">
             <End Role="City" EntitySet="City" />
-            <End Role="Residense" EntitySet="Residense" />
+            <End Role="EatPlace" EntitySet="EatPlace" />
+          </AssociationSet>
+          <AssociationSet Name="fk_EntertainmentId_City_Id" Association="TeamProjectModel.fk_EntertainmentId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Entertainment" EntitySet="Entertainment" />
+          </AssociationSet>
+          <AssociationSet Name="fk_SupermarketsId_City_Id" Association="TeamProjectModel.fk_SupermarketsId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Supermarkets" EntitySet="Supermarkets" />
+          </AssociationSet>
+          <AssociationSet Name="fk_TransportId_City_Id" Association="TeamProjectModel.fk_TransportId_City_Id">
+            <End Role="City" EntitySet="City" />
+            <End Role="Transport" EntitySet="Transport" />
           </AssociationSet>
         </EntityContainer>
+        <EntityType Name="Activities">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Link" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Adress" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="City" Relationship="TeamProjectModel.fk_ActivitiesId_City_Id" FromRole="Activities" ToRole="City" />
+        </EntityType>
         <EntityType Name="City">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="CountryId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="Country" Relationship="TeamProjectModel.FK_City_CountryId_CountryId" FromRole="City" ToRole="Country" />
-          <NavigationProperty Name="Residense" Relationship="TeamProjectModel.FK_Place_CityId_CityId" FromRole="City" ToRole="Residense" />
+          <Property Name="name" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="Activities" Relationship="TeamProjectModel.fk_ActivitiesId_City_Id" FromRole="City" ToRole="Activities" />
+          <NavigationProperty Name="Residence" Relationship="TeamProjectModel.fk_CityId_City_Id" FromRole="City" ToRole="Residence" />
+          <NavigationProperty Name="Country" Relationship="TeamProjectModel.fk_CountryId_Country_Id" FromRole="City" ToRole="Country" />
+          <NavigationProperty Name="EatPlace" Relationship="TeamProjectModel.fk_EatPlaceId_City_Id" FromRole="City" ToRole="EatPlace" />
+          <NavigationProperty Name="Entertainment" Relationship="TeamProjectModel.fk_EntertainmentId_City_Id" FromRole="City" ToRole="Entertainment" />
+          <NavigationProperty Name="Supermarkets" Relationship="TeamProjectModel.fk_SupermarketsId_City_Id" FromRole="City" ToRole="Supermarkets" />
+          <NavigationProperty Name="Transport" Relationship="TeamProjectModel.fk_TransportId_City_Id" FromRole="City" ToRole="Transport" />
         </EntityType>
         <EntityType Name="Country">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <NavigationProperty Name="City" Relationship="TeamProjectModel.FK_City_CountryId_CountryId" FromRole="Country" ToRole="City" />
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="name" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="City" Relationship="TeamProjectModel.fk_CountryId_Country_Id" FromRole="Country" ToRole="City" />
         </EntityType>
-        <EntityType Name="Residense">
+        <EntityType Name="EatPlace">
           <Key>
-            <PropertyRef Name="ID" />
+            <PropertyRef Name="Id" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
           <Property Name="CityId" Type="Int32" Nullable="false" />
-          <Property Name="Name" Type="String" Nullable="false" MaxLength="164" Unicode="true" FixedLength="false" />
-          <Property Name="Address" Type="String" Nullable="false" MaxLength="164" Unicode="true" FixedLength="false" />
-          <Property Name="Raiting" Type="Int32" />
-          <Property Name="Phone" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
-          <Property Name="Price" Type="Decimal" Precision="18" Scale="2" />
-          <NavigationProperty Name="City" Relationship="TeamProjectModel.FK_Place_CityId_CityId" FromRole="Residense" ToRole="City" />
+          <Property Name="name" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="desccription" Type="String" MaxLength="512" Unicode="true" FixedLength="false" />
+          <Property Name="raiting" Type="Int32" Nullable="false" />
+          <Property Name="adress" Type="String" MaxLength="128" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="City" Relationship="TeamProjectModel.fk_EatPlaceId_City_Id" FromRole="EatPlace" ToRole="City" />
         </EntityType>
-        <Association Name="FK_City_CountryId_CountryId">
+        <EntityType Name="Entertainment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Adress" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Link" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Phone" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="City" Relationship="TeamProjectModel.fk_EntertainmentId_City_Id" FromRole="Entertainment" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Residence">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="adress" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="stars" Type="Int32" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="City" Relationship="TeamProjectModel.fk_CityId_City_Id" FromRole="Residence" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Supermarkets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="name" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="adress" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="phone" Type="String" MaxLength="64" Unicode="true" FixedLength="false" />
+          <NavigationProperty Name="City" Relationship="TeamProjectModel.fk_SupermarketsId_City_Id" FromRole="Supermarkets" ToRole="City" />
+        </EntityType>
+        <EntityType Name="Transport">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+          <Property Name="CityId" Type="Int32" Nullable="false" />
+          <Property Name="Taxi_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Bus_price" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="Metro_price" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="City" Relationship="TeamProjectModel.fk_TransportId_City_Id" FromRole="Transport" ToRole="City" />
+        </EntityType>
+        <Association Name="fk_ActivitiesId_City_Id">
+          <End Role="City" Type="TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Activities" Type="TeamProjectModel.Activities" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Activities">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CityId_City_Id">
+          <End Role="City" Type="TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Residence" Type="TeamProjectModel.Residence" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Residence">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_CountryId_Country_Id">
           <End Role="Country" Type="TeamProjectModel.Country" Multiplicity="1" />
           <End Role="City" Type="TeamProjectModel.City" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="Country">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="City">
               <PropertyRef Name="CountryId" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK_Place_CityId_CityId">
+        <Association Name="fk_EatPlaceId_City_Id">
           <End Role="City" Type="TeamProjectModel.City" Multiplicity="1" />
-          <End Role="Residense" Type="TeamProjectModel.Residense" Multiplicity="*" />
+          <End Role="EatPlace" Type="TeamProjectModel.EatPlace" Multiplicity="*" />
           <ReferentialConstraint>
             <Principal Role="City">
-              <PropertyRef Name="ID" />
+              <PropertyRef Name="Id" />
             </Principal>
-            <Dependent Role="Residense">
+            <Dependent Role="EatPlace">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_EntertainmentId_City_Id">
+          <End Role="City" Type="TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Entertainment" Type="TeamProjectModel.Entertainment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Entertainment">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_SupermarketsId_City_Id">
+          <End Role="City" Type="TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Supermarkets" Type="TeamProjectModel.Supermarkets" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Supermarkets">
+              <PropertyRef Name="CityId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="fk_TransportId_City_Id">
+          <End Role="City" Type="TeamProjectModel.City" Multiplicity="1" />
+          <End Role="Transport" Type="TeamProjectModel.Transport" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="City">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Transport">
               <PropertyRef Name="CityId" />
             </Dependent>
           </ReferentialConstraint>
@@ -147,34 +435,93 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище TeamProjectModelContainer" CdmEntityContainer="TeamProjectEntities1">
+        <EntityContainerMapping StorageEntityContainer="Хранилище TeamProjectModelContainer" CdmEntityContainer="TeamProjectEntities">
+          <EntitySetMapping Name="Activities">
+            <EntityTypeMapping TypeName="TeamProjectModel.Activities">
+              <MappingFragment StoreEntitySet="Activities">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="City">
             <EntityTypeMapping TypeName="TeamProjectModel.City">
               <MappingFragment StoreEntitySet="City">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CountryId" ColumnName="CountryId" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Country">
             <EntityTypeMapping TypeName="TeamProjectModel.Country">
               <MappingFragment StoreEntitySet="Country">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="name" ColumnName="name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Residense">
-            <EntityTypeMapping TypeName="TeamProjectModel.Residense">
-              <MappingFragment StoreEntitySet="Residense">
-                <ScalarProperty Name="ID" ColumnName="ID" />
+          <EntitySetMapping Name="EatPlace">
+            <EntityTypeMapping TypeName="TeamProjectModel.EatPlace">
+              <MappingFragment StoreEntitySet="EatPlace">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="desccription" ColumnName="desccription" />
+                <ScalarProperty Name="raiting" ColumnName="raiting" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Entertainment">
+            <EntityTypeMapping TypeName="TeamProjectModel.Entertainment">
+              <MappingFragment StoreEntitySet="Entertainment">
+                <ScalarProperty Name="Id" ColumnName="Id" />
                 <ScalarProperty Name="CityId" ColumnName="CityId" />
                 <ScalarProperty Name="Name" ColumnName="Name" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Raiting" ColumnName="Raiting" />
+                <ScalarProperty Name="Adress" ColumnName="Adress" />
+                <ScalarProperty Name="Link" ColumnName="Link" />
                 <ScalarProperty Name="Phone" ColumnName="Phone" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Residence">
+            <EntityTypeMapping TypeName="TeamProjectModel.Residence">
+              <MappingFragment StoreEntitySet="Residence">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="stars" ColumnName="stars" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="price" ColumnName="price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Supermarkets">
+            <EntityTypeMapping TypeName="TeamProjectModel.Supermarkets">
+              <MappingFragment StoreEntitySet="Supermarkets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="adress" ColumnName="adress" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Transport">
+            <EntityTypeMapping TypeName="TeamProjectModel.Transport">
+              <MappingFragment StoreEntitySet="Transport">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CityId" ColumnName="CityId" />
+                <ScalarProperty Name="Taxi_price" ColumnName="Taxi_price" />
+                <ScalarProperty Name="Bus_price" ColumnName="Bus_price" />
+                <ScalarProperty Name="Metro_price" ColumnName="Metro_price" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

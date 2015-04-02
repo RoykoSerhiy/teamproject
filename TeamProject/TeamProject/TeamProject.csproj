@@ -62,11 +62,21 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\ActivitiesModel.cs" />
     <Compile Include="Models\CityModel.cs" />
     <Compile Include="Models\CountryModel.cs" />
+    <Compile Include="Models\EatPlaceModel.cs" />
+    <Compile Include="Models\EntertainmentModel.cs" />
+    <Compile Include="Models\SupermarketsModel.cs" />
+    <Compile Include="Models\TransportModel.cs" />
+    <Compile Include="ViewModel\ActivitiesViewModel.cs" />
     <Compile Include="ViewModel\CityViewModel.cs" />
     <Compile Include="ViewModel\CountryViewModel.cs" />
+    <Compile Include="ViewModel\EatPlaceViewModel.cs" />
+    <Compile Include="ViewModel\EntertainmentViewModel.cs" />
     <Compile Include="ViewModel\ResidenseViewModel.cs" />
+    <Compile Include="ViewModel\SupermarketsViewModel.cs" />
+    <Compile Include="ViewModel\TransportViewModel.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -121,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

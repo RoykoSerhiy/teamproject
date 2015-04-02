@@ -13,32 +13,34 @@ namespace TeamProject.ViewModel
     public class ResidenseViewModel
     {
         private readonly IResidenseManager _residenseManager;
+        
 
-        List<ResidenseModel> _items = null;
-        List<Residense> _residenses = null;
+        List<ResidenceModel> _items = null;
+        //List<Residence> _residenses = null;
+       
 
-        public List<ResidenseModel> CreateResidenseModel(IEnumerable<Residense> residenses)
+        public List<ResidenceModel> CreateResidenseModel(IEnumerable<Residence> residenses)
         {
-            List<ResidenseModel> listCatalogModel = new List<ResidenseModel>();
+            List<ResidenceModel> listCatalogModel = new List<ResidenceModel>();
 
             var _res = from resid in residenses
                        select new
                        {
-                           Id = resid.ID,
+                           Id = resid.Id,
                            CityId = resid.CityId,
-                           Name = resid.Name,
-                           Adress = resid.Address,
-                           Raiting = resid.Raiting,
-                           Phone = resid.Phone,
-                           Price = resid.Price
+                           Name = resid.name,
+                           Adress = resid.adress,
+                           Raiting = resid.stars,
+                           Phone = resid.phone,
+                           Price = resid.price
                        };
             foreach (var r in _res)
             {
-                listCatalogModel.Add(new ResidenseModel(r.Id , r.CityId , r.Name , r.Adress , r.Raiting , r.Phone ,r.Price));
+                listCatalogModel.Add(new ResidenceModel(r.Id , r.CityId , r.Name , r.Adress , r.Raiting , r.Phone ,r.Price));
             }
             return listCatalogModel;
         }
-        public IEnumerable<ResidenseModel> Catalog
+        public IEnumerable<ResidenceModel> Catalog
         {
             get
             {
@@ -51,22 +53,26 @@ namespace TeamProject.ViewModel
                 return _items;
             }
         }
-        public IEnumerable<Residense> Residenses
-        {
-            get
-            {
-                if (_residenses == null)
-                {
-                    return _residenseManager.GetAll();
-                }
-                return _residenses;
-            }
-        }
+        //public IEnumerable<Residence> Residenses
+        //{
+        //    get
+        //    {
+        //        if (_residenses == null)
+        //        {
+        //            return _residenseManager.GetAll();
+        //        }
+        //        return _residenses;
+        //    }
+        //}
+      
+       
         public ResidenseViewModel(
                 IResidenseManager residenseManager
+                
             )
         {
             _residenseManager = residenseManager;
+            
         }
 
     }

@@ -47,13 +47,23 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Managers\Abstract\AbstractManager.cs" />
+    <Compile Include="Managers\Abstract\IActivitiesManager.cs" />
     <Compile Include="Managers\Abstract\ICityManager.cs" />
     <Compile Include="Managers\Abstract\ICountryManager.cs" />
+    <Compile Include="Managers\Abstract\IEatPlaceManager.cs" />
+    <Compile Include="Managers\Abstract\IEntertainmentManager.cs" />
     <Compile Include="Managers\Abstract\IManager.cs" />
     <Compile Include="Managers\Abstract\IResidenseManager.cs" />
+    <Compile Include="Managers\Abstract\ISupermarketManager.cs" />
+    <Compile Include="Managers\Abstract\ITransportManager.cs" />
+    <Compile Include="Managers\Concrete\ActivitiesManager.cs" />
     <Compile Include="Managers\Concrete\CityManager.cs" />
     <Compile Include="Managers\Concrete\CountryManager.cs" />
+    <Compile Include="Managers\Concrete\EatPlaceManager.cs" />
+    <Compile Include="Managers\Concrete\EntertainmentManager.cs" />
     <Compile Include="Managers\Concrete\ResidenseManager.cs" />
+    <Compile Include="Managers\Concrete\SupermarketManager.cs" />
+    <Compile Include="Managers\Concrete\TransportManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace TeamPrj.Buisnes.Managers.Abstract
 {
-    public interface IResidenseManager : IManager
+    public interface IEntertainmentManager : IManager
     {
-        IEnumerable<Residence> GetAll();
+        IEnumerable<Entertainment> GetAll();
     }
 }

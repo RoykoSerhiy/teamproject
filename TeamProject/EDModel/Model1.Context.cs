@@ -13,10 +13,10 @@ namespace EDModel
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class TeamProjectEntities1 : DbContext
+    public partial class TeamProjectEntities : DbContext
     {
-        public TeamProjectEntities1()
-            : base("name=TeamProjectEntities1")
+        public TeamProjectEntities()
+            : base("name=TeamProjectEntities")
         {
         }
     
@@ -25,8 +25,13 @@ namespace EDModel
             throw new UnintentionalCodeFirstException();
         }
     
+        public DbSet<Activities> Activities { get; set; }
         public DbSet<City> City { get; set; }
         public DbSet<Country> Country { get; set; }
-        public DbSet<Residense> Residense { get; set; }
+        public DbSet<EatPlace> EatPlace { get; set; }
+        public DbSet<Entertainment> Entertainment { get; set; }
+        public DbSet<Residence> Residence { get; set; }
+        public DbSet<Supermarkets> Supermarkets { get; set; }
+        public DbSet<Transport> Transport { get; set; }
     }
 }

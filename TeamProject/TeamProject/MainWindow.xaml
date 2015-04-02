@@ -23,7 +23,7 @@
                                     <DataGrid.Columns>
                                         <DataGridTextColumn Header="Hotel / Hostel" Width="190" Binding="{Binding Name}"/>
                                         <DataGridTextColumn Header="Adress" Width="300" Binding="{Binding Adress}"/>
-                                        <DataGridTextColumn Header="Price" Width="80" Binding="{Binding Price}"/>
+                                        <DataGridTextColumn Header="Price $" Width="80" Binding="{Binding Price}"/>
                                          <DataGridTextColumn Header="Raiting" Width="80" Binding="{Binding Raiting}"/>
                                         <DataGridTextColumn Header="Phone" Width="120" Binding="{Binding Phone}"/>
                                     </DataGrid.Columns>
@@ -33,21 +33,94 @@
                         </TabItem>
                         <TabItem Header="Transport">
                             <Grid Background="#FFE5E5E5">
-                                <DataGrid HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="338" Width="770">
+                                <DataGrid Name="dgTransport" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="338" Width="770" ItemsSource="{Binding}" IsReadOnly="True"
+                                          CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
                                     <DataGrid.Columns>
-                                        <DataGridTextColumn Header="Name"/>
-                                        <DataGridTextColumn Header="Adress"/>
-                                        <DataGridTextColumn Header="price"/>
+                                        <DataGridTextColumn Header="Taxi Price $" Width="200" Binding="{Binding TaxiPrice}"/>
+                                        <DataGridTextColumn Header="Bus Price $" Width="200" Binding="{Binding BusPrice}"/>
+                                        <DataGridTextColumn Header="Metro Price $" Width="200" Binding="{Binding MetroPrice}"/>
                                     </DataGrid.Columns>
                                 </DataGrid>
                             </Grid>
                         </TabItem>
+                        <TabItem Header="Eat Plase">
+                            <Grid Background="#FFE5E5E5">
+                                <DataGrid Name="dgEatPlase" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="338" Width="770" ItemsSource="{Binding}" IsReadOnly="True"
+                                          CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name" Width="150" Binding="{Binding Name}"/>
+                                        <DataGridTextColumn Header="Phone" Width="120" Binding="{Binding Phone}"/>
+                                        <DataGridTextColumn Header="Description" Width="238" Binding="{Binding Description}"/>
+                                        <DataGridTextColumn Header="Raiting" Width="60" Binding="{Binding Raiting}"/>
+                                        <DataGridTextColumn Header="Address" Width="200" Binding="{Binding Address}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Supermarkets">
+                            <Grid Background="#FFE5E5E5">
+                                <DataGrid Name="dgSupermarkets" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="338" Width="770" ItemsSource="{Binding}" IsReadOnly="True"
+                                          CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name" Width="300" Binding="{Binding Name}"/>
+                                        <DataGridTextColumn Header="Address" Width="300" Binding="{Binding Address}"/>
+                                        <DataGridTextColumn Header="Phone" Width="167" Binding="{Binding Phone}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </TabItem>
+                        <TabItem Header="Entertainment">
+                            <Grid Background="#FFE5E5E5">
+                                <DataGrid Name="dgEntertainment" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="338" Width="770" ItemsSource="{Binding}" IsReadOnly="True"
+                                          CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}"/>
+                                        <DataGridTextColumn Header="Address" Width="200" Binding="{Binding Address}"/>
+                                        <DataGridTextColumn Header="Link" Width="200" Binding="{Binding Link}"/>
+                                        <DataGridTextColumn Header="Phone" Width="167" Binding="{Binding Phone}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </TabItem>
+                         
+                        <TabItem Header="Activities">
+                            <Grid Background="#FFE5E5E5">
+                                <DataGrid Name="dgActivities" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="338" Width="770" ItemsSource="{Binding}" IsReadOnly="True"
+                                          CanUserAddRows="False" CanUserDeleteRows="False" AutoGenerateColumns="False">
+                                    <DataGrid.Columns>
+                                        <DataGridTextColumn Header="Name" Width="200" Binding="{Binding Name}"/>
+                                        <DataGridTextColumn Header="Address" Width="200" Binding="{Binding Address}"/>
+                                        <DataGridTextColumn Header="Link" Width="200" Binding="{Binding Link}"/>
+                                        <DataGridTextColumn Header="Phone" Width="167" Binding="{Binding Phone}"/>
+                                    </DataGrid.Columns>
+                                </DataGrid>
+                            </Grid>
+                        </TabItem>
+
                     </TabControl>
 
 
                 </Grid>
              </TabItem>
+            <TabItem Header="About">
+                <Grid Background="#FFE5E5E5">
+                    <StackPanel Orientation="Horizontal">
+                        <StackPanel Orientation="Vertical">
+                            <Label Width="320">Created by team:</Label>
+                            <Label Width="320" FontSize="30" FontFamily="Algerian" Foreground="Red">Cats Of The Devil</Label>
+                            <Label Width="320">Programmers:</Label>
+                            <Label Width="320" FontSize="20" FontFamily="Algerian" Foreground="Red">Alexander Polishchuk</Label>
+                            <Label Width="320"  FontSize="20" FontFamily="Algerian" Foreground="Red">Alexander Demyanenko</Label>
+                            <Label Width="320"  FontSize="20" FontFamily="Algerian" Foreground="Red">Alexander Prokopiv</Label>
+                            <Label Width="320"  FontSize="20" FontFamily="Algerian" Foreground="Red">Igor Moskaliuk</Label>
+                            <Label Width="320"  FontSize="20" FontFamily="Algerian" Foreground="Red">Nazar Fedyk</Label>
+                            <Label Width="320"  FontSize="20" FontFamily="Algerian" Foreground="Red">Serhiy Royko</Label>
+                        </StackPanel>
 
+                        <Image Source="C:\Users\Serhiy\Documents\Visual Studio 2012\Projects\TeamProject\TeamProject\Images\cat.jpg" HorizontalAlignment="Right"/>
+                    </StackPanel>
+                </Grid>
+            </TabItem>
 
         </TabControl>
 

@@ -4,12 +4,22 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="aeea09a28d1d47009d8b49c19065baa9" Name="Диаграмма1">
-        <EntityTypeShape EntityType="TeamProjectModel.City" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamProjectModel.Country" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="TeamProjectModel.Residense" Width="1.5" PointX="5.25" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="TeamProjectModel.FK_City_CountryId_CountryId" ManuallyRouted="false" />
-        <AssociationConnector Association="TeamProjectModel.FK_Place_CityId_CityId" ManuallyRouted="false" />
+      <Diagram DiagramId="385a9476172f4852ab7a41c38ad6ee84" Name="Диаграмма1">
+        <EntityTypeShape EntityType="TeamProjectModel.Activities" Width="1.5" PointX="5.25" PointY="1.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamProjectModel.City" Width="1.5" PointX="3" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamProjectModel.Country" Width="1.5" PointX="0.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamProjectModel.EatPlace" Width="1.5" PointX="5.25" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamProjectModel.Entertainment" Width="1.5" PointX="5.25" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamProjectModel.Residence" Width="1.5" PointX="5.25" PointY="11.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamProjectModel.Supermarkets" Width="1.5" PointX="5.25" PointY="14.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TeamProjectModel.Transport" Width="1.5" PointX="5.25" PointY="17.5" IsExpanded="true" />
+        <AssociationConnector Association="TeamProjectModel.fk_ActivitiesId_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamProjectModel.fk_CityId_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamProjectModel.fk_CountryId_Country_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamProjectModel.fk_EatPlaceId_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamProjectModel.fk_EntertainmentId_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamProjectModel.fk_SupermarketsId_City_Id" ManuallyRouted="false" />
+        <AssociationConnector Association="TeamProjectModel.fk_TransportId_City_Id" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
